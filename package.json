@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "hugo server",
-    "build": "hugo build --minify",
+    "build": "hugo --gc --minify",
     "preview": "hugo server --disableFastRender --navigateToChanged --templateMetrics --templateMetricsHints --watch --forceSyncStatic -e production --minify",
     "lint": "prettier -c ."
   },
