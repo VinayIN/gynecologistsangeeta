@@ -1,14 +1,15 @@
 const plugin = require("tailwindcss/plugin");
 const fs = require("fs");
 const path = require("path");
-
 const themePath = path.join(__dirname, "../data/theme.json");
 const themeRead = fs.readFileSync(themePath, "utf8");
 const themeConfig = JSON.parse(themeRead);
 
+// Helper to extract a clean font name.
 const findFont = (fontStr) =>
   fontStr.replace(/\+/g, " ").replace(/:[^:]+/g, "");
 
+// Set font families dynamically, filtering out 'type' keys
 const fontFamilies = Object.entries(themeConfig.fonts.font_family)
   .filter(([key]) => !key.includes("type"))
   .reduce((acc, [key, font]) => {
@@ -21,7 +22,6 @@ const defaultColorGroups = [
   { colors: themeConfig.colors.default.theme_color, prefix: "" },
   { colors: themeConfig.colors.default.text_color, prefix: "" },
 ];
-
 const darkColorGroups = [];
 if (themeConfig.colors.darkmode?.theme_color) {
   darkColorGroups.push({
@@ -76,6 +76,7 @@ Object.entries(fontFamilies).forEach(([key, font]) => {
 
 const baseVars = { ...fontVars, ...defaultVars };
 
+// Build a colorsMap including both sets
 const colorsMap = {};
 [...defaultColorGroups, ...darkColorGroups].forEach(({ colors, prefix }) => {
   Object.entries(colors).forEach(([key]) => {
@@ -86,6 +87,7 @@ const colorsMap = {};
 
 module.exports = plugin.withOptions(() => {
   return function ({ addBase, addUtilities, matchUtilities }) {
+    // Default vars on :root; dark vars on .dark
     addBase({
       ":root": baseVars,
       ".dark": darkVars,

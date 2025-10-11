@@ -4,110 +4,19 @@ timeZone = "Asia/Kolkata"
 summaryLength = 25
 defaultContentLanguage = 'en'
 defaultContentLanguageInSubdir = false
+theme = "github.com/zeon-studio/hugoplate"
 
 [services]
 [services.googleAnalytics]
 ID = 'G-MEASUREMENT_ID'
 
 [permalinks]
-page = "/:slug/"
-
-[pagination]
-disableAliases = false
-pagerSize = 10
-path = 'page'
+pages = "/:slugorcontentbasename/"
 
 [build]
 [build.buildStats]
 enable = true
-[[build.cachebusters]]
-source = 'assets/notwatching/hugo_stats\.json'
-target = 'css'
 
-[module]
-[[module.mounts]]
-source = 'assets'
-target = 'assets'
-
-[[module.mounts]]
-disableWatch = true
-source = 'hugo_stats.json'
-target = 'assets/notwatching/hugo_stats.json'
-
-[[module.imports]]
-path = 'github.com/VinayIN/hugoplate'
-
-[[module.imports]]
-path = 'github.com/gethugothemes/hugo-modules/search'
-
-[[module.imports]]
-path = 'github.com/gethugothemes/hugo-modules/pwa'
-
-[[module.imports]]
-path = 'github.com/gethugothemes/hugo-modules/images'
-
-[[module.imports]]
-path = 'github.com/gethugothemes/hugo-modules/videos'
-
-[[module.imports]]
-path = 'github.com/gethugothemes/hugo-modules/icons/font-awesome'
-
-[[module.imports]]
-path = 'github.com/gethugothemes/hugo-modules/gzip-caching'
-
-[[module.imports]]
-path = 'github.com/gethugothemes/hugo-modules/adsense'
-
-[[module.imports]]
-path = 'github.com/gethugothemes/hugo-modules/accordion'
-
-[[module.imports]]
-path = 'github.com/gethugothemes/hugo-modules/table-of-contents'
-
-[[module.imports]]
-path = 'github.com/gethugothemes/hugo-modules/tab'
-
-[[module.imports]]
-path = 'github.com/gethugothemes/hugo-modules/modal'
-
-[[module.imports]]
-path = 'github.com/gethugothemes/hugo-modules/gallery-slider'
-
-[[module.imports]]
-path = 'github.com/gethugothemes/hugo-modules/components/preloader'
-
-[[module.imports]]
-path = 'github.com/gethugothemes/hugo-modules/components/social-share'
-
-[[module.imports]]
-path = 'github.com/gethugothemes/hugo-modules/components/cookie-consent'
-
-[[module.imports]]
-path = 'github.com/gethugothemes/hugo-modules/components/announcement'
-
-[[module.imports]]
-path = 'github.com/gethugothemes/hugo-modules/components/custom-script'
-
-[[module.imports]]
-path = 'github.com/gethugothemes/hugo-modules/components/render-link'
-
-[[module.imports]]
-path = 'github.com/gethugothemes/hugo-modules/shortcodes/button'
-
-[[module.imports]]
-path = 'github.com/gethugothemes/hugo-modules/shortcodes/notice'
-
-[[module.imports]]
-path = 'github.com/gethugothemes/hugo-modules/seo-tools/basic-seo'
-
-[[module.imports]]
-path = 'github.com/gethugothemes/hugo-modules/seo-tools/site-verifications'
-
-[[module.imports]]
-path = 'github.com/gethugothemes/hugo-modules/seo-tools/google-tag-manager'
-
-[[module.imports]]
-path = 'github.com/hugomods/mermaid'
 
 [outputs]
 home = ["HTML", "RSS", "WebAppManifest", "SearchIndex"]
@@ -134,7 +43,7 @@ style = 'monokai'
 lineNumbersInTable = false
 
 [markup.tableOfContents]
-startLevel = 2
+startLevel = 1
 endLevel = 5
 ordered = true
 

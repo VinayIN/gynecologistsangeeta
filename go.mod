@@ -1,9 +1,8 @@
-module github.com/VinayIN/gynecologistsangeeta
+module gynecologistsangeeta.com
 
 go 1.25
 
 require (
-	github.com/VinayIN/hugoplate v0.0.0-20251007074340-a6834f280c6b // indirect
 	github.com/gethugothemes/hugo-modules/accordion v0.0.0-20250702070945-cd8319c6b26e // indirect
 	github.com/gethugothemes/hugo-modules/adsense v0.0.0-20250702070945-cd8319c6b26e // indirect
 	github.com/gethugothemes/hugo-modules/components/announcement v0.0.0-20250702070945-cd8319c6b26e // indirect
@@ -28,4 +27,5 @@ require (
 	github.com/gethugothemes/hugo-modules/table-of-contents v0.0.0-20250702070945-cd8319c6b26e // indirect
 	github.com/gethugothemes/hugo-modules/videos v0.0.0-20250702070945-cd8319c6b26e // indirect
 	github.com/hugomods/mermaid v0.1.4 // indirect
+	github.com/zeon-studio/hugoplate v0.0.0-20251011093858-05b3af78ccf7 // indirect
 )

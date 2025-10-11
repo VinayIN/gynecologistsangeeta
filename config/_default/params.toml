@@ -4,42 +4,21 @@ logo_darkmode = "images/dr-sangeeta-logo.png"
 logo_width = "160px"
 logo_height = "32px"
 logo_webp = true
+logo_text = "Dr. Sangeeta Pradhan"
+navbar_fixed = true
 theme_switcher = true
 theme_default = "system"
-navbar_fixed = true
-logo_text = "Dr. Sangeeta Pradhan"
-description = "Dr. Sangeeta Pradhan - Expert Gynecologist and Obstetrician in Bhubaneswar, Odisha. Specialized in high-risk pregnancy, gynae-oncology, and infertility treatment."
-author = "Dr. Sangeeta Pradhan"
-image = "images/og-image.png"
-contact_form_action = "https://formsubmit.co/sangeetapradhan321@gmail.com"
-phone_number = "+91 82490 12345"
-whatsapp_number = "+91 82490 12345"
-whatsapp_link = "https://wa.me/918249012345"
-appointment_email = "sangeetapradhan321@gmail.com"
-clinic_hours = ["Mon-Sat: 9:00 AM - 1:00 PM & 5:00 PM - 8:00 PM", "Sunday: By appointment"]
-copyright = "copyright ©️ 2025, Dr. Sangeeta Pradhan. Designed & Developed by [Binay Pradhan](https://binaypradhan.com)"
+copyright = "© 2025 Dr. Sangeeta Pradhan. All rights reserved. Designed & Developed by [Binay Pradhan](https://binaypradhan.com)"
 
 [search]
 enable = true
-include_all_sections = true
 show_image = true
 show_description = true
 
 [metadata]
 keywords = ["gynecologist bhubaneswar", "obstetrician bhubaneswar", "women's health", "high-risk pregnancy", "gynae-oncology", "infertility treatment", "dr sangeeta pradhan", "dr sangeeta gynecologist bhubaneswar"]
-twitter_card = "summary_large_image"
-type = "website"
-
-[navigation_button]
-enable = true
-label = "Book Consultation"
-link = "/contact/"
-
-[site_verifications]
-google = ""
-bing = ""
-pinterest = ""
-yandex = ""
+description = "Dr. Sangeeta Pradhan - Expert Gynecologist and Obstetrician in Bhubaneswar, Odisha. Specialized in high-risk pregnancy, gynae-oncology, and infertility treatment."
+image = "images/og-image.png"
 
 [cookies]
 enable = true
