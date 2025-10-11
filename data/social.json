@@ -1,0 +1,19 @@
+{
+  "main": [
+    {
+      "name": "whatsapp",
+      "icon": "fab fa-whatsapp",
+      "link": "https://wa.me/918249012345"
+    },
+    {
+      "name": "phone",
+      "icon": "fa-solid fa-phone",
+      "link": "tel:+918249012345"
+    },
+    {
+      "name": "linkedin",
+      "icon": "fab fa-linkedin",
+      "link": "https://www.linkedin.com/"
+    }
+  ]
+}

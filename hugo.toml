@@ -1,0 +1,198 @@
+baseURL = "https://gynecologistsangeeta.com"
+title = "Dr. Sangeeta Pradhan"
+timeZone = "Asia/Kolkata"
+summaryLength = 25
+defaultContentLanguage = 'en'
+defaultContentLanguageInSubdir = false
+
+[services]
+[services.googleAnalytics]
+ID = 'G-MEASUREMENT_ID'
+
+[permalinks]
+page = "/:slug/"
+
+[pagination]
+disableAliases = false
+pagerSize = 10
+path = 'page'
+
+[build]
+[build.buildStats]
+enable = true
+[[build.cachebusters]]
+source = 'assets/notwatching/hugo_stats\.json'
+target = 'css'
+
+[module]
+[[module.mounts]]
+source = 'assets'
+target = 'assets'
+
+[[module.mounts]]
+disableWatch = true
+source = 'hugo_stats.json'
+target = 'assets/notwatching/hugo_stats.json'
+
+[[module.imports]]
+path = 'github.com/VinayIN/hugoplate'
+
+[[module.imports]]
+path = 'github.com/gethugothemes/hugo-modules/search'
+
+[[module.imports]]
+path = 'github.com/gethugothemes/hugo-modules/pwa'
+
+[[module.imports]]
+path = 'github.com/gethugothemes/hugo-modules/images'
+
+[[module.imports]]
+path = 'github.com/gethugothemes/hugo-modules/videos'
+
+[[module.imports]]
+path = 'github.com/gethugothemes/hugo-modules/icons/font-awesome'
+
+[[module.imports]]
+path = 'github.com/gethugothemes/hugo-modules/gzip-caching'
+
+[[module.imports]]
+path = 'github.com/gethugothemes/hugo-modules/adsense'
+
+[[module.imports]]
+path = 'github.com/gethugothemes/hugo-modules/accordion'
+
+[[module.imports]]
+path = 'github.com/gethugothemes/hugo-modules/table-of-contents'
+
+[[module.imports]]
+path = 'github.com/gethugothemes/hugo-modules/tab'
+
+[[module.imports]]
+path = 'github.com/gethugothemes/hugo-modules/modal'
+
+[[module.imports]]
+path = 'github.com/gethugothemes/hugo-modules/gallery-slider'
+
+[[module.imports]]
+path = 'github.com/gethugothemes/hugo-modules/components/preloader'
+
+[[module.imports]]
+path = 'github.com/gethugothemes/hugo-modules/components/social-share'
+
+[[module.imports]]
+path = 'github.com/gethugothemes/hugo-modules/components/cookie-consent'
+
+[[module.imports]]
+path = 'github.com/gethugothemes/hugo-modules/components/announcement'
+
+[[module.imports]]
+path = 'github.com/gethugothemes/hugo-modules/components/custom-script'
+
+[[module.imports]]
+path = 'github.com/gethugothemes/hugo-modules/components/render-link'
+
+[[module.imports]]
+path = 'github.com/gethugothemes/hugo-modules/shortcodes/button'
+
+[[module.imports]]
+path = 'github.com/gethugothemes/hugo-modules/shortcodes/notice'
+
+[[module.imports]]
+path = 'github.com/gethugothemes/hugo-modules/seo-tools/basic-seo'
+
+[[module.imports]]
+path = 'github.com/gethugothemes/hugo-modules/seo-tools/site-verifications'
+
+[[module.imports]]
+path = 'github.com/gethugothemes/hugo-modules/seo-tools/google-tag-manager'
+
+[[module.imports]]
+path = 'github.com/hugomods/mermaid'
+
+[outputs]
+home = ["HTML", "RSS", "WebAppManifest", "SearchIndex"]
+
+[imaging]
+quality = 80
+resampleFilter = "Lanczos"
+
+[caches]
+[caches.images]
+dir = ":resourceDir/_gen"
+maxAge = "720h"
+
+[caches.assets]
+dir = ":resourceDir/_gen"
+maxAge = "720h"
+
+[markup]
+[markup.goldmark.renderer]
+unsafe = true
+
+[markup.highlight]
+style = 'monokai'
+lineNumbersInTable = false
+
+[markup.tableOfContents]
+startLevel = 2
+endLevel = 5
+ordered = true
+
+[mediaTypes]
+[mediaTypes."application/manifest+json"]
+suffixes = ["webmanifest"]
+
+[outputFormats]
+[outputFormats.WebAppManifest]
+mediaType = "application/manifest+json"
+rel = "manifest"
+
+[outputFormats.SearchIndex]
+mediaType = "application/json"
+baseName = "searchindex"
+isPlainText = true
+notAlternative = true
+
+[[params.plugins.css]]
+link = "plugins/swiper/swiper-bundle.css"
+lazy = true
+[[params.plugins.css]]
+link = "plugins/glightbox/glightbox.css"
+lazy = true
+[[params.plugins.css]]
+link = "plugins/font-awesome/v6/brands.css"
+lazy = true
+[[params.plugins.css]]
+link = "plugins/font-awesome/v6/solid.css"
+lazy = true
+[[params.plugins.css]]
+link = "plugins/font-awesome/v6/icons.css"
+lazy = true
+
+[[params.plugins.js]]
+link = "js/search.js"
+lazy = false
+[[params.plugins.js]]
+link = "plugins/swiper/swiper-bundle.js"
+lazy = false
+[[params.plugins.js]]
+link = "plugins/cookie.js"
+lazy = false
+[[params.plugins.js]]
+link = "plugins/glightbox/glightbox.js"
+lazy = true
+[[params.plugins.js]]
+link = "js/gallery-slider.js"
+lazy = true
+[[params.plugins.js]]
+link = "js/accordion.js"
+lazy = true
+[[params.plugins.js]]
+link = "js/tab.js"
+lazy = true
+[[params.plugins.js]]
+link = "js/modal.js"
+lazy = true
+[[params.plugins.js]]
+link = "plugins/youtube-lite.js"
+lazy = true
