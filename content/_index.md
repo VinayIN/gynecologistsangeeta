@@ -24,7 +24,7 @@ banner:
 
 features:
   - title: "High-Risk Pregnancy & Birth Planning"
-    image: "/images/service-1.png"
+    image: "/images/service.jpg"
     content: "Trimester-specific antenatal review with fetal medicine inputs, respectful birthing plans, and escalation pathways that keep families informed at every step."
     bulletpoints:
       - "Comprehensive antenatal diagnostics and growth scans"
@@ -36,7 +36,7 @@ features:
       label: "Explore Antenatal Care"
       link: "/services/#high-risk-pregnancy"
   - title: "Advanced Gynecology & Minimally Invasive Surgery"
-    image: "/images/service-2.png"
+    image: "/images/service.jpg"
     content: "Laparoscopic and hysteroscopic surgery for fibroids, endometriosis, fertility concerns, and gynae-oncology, supported by multidisciplinary teams."
     bulletpoints:
       - "Fertility-preserving laparoscopic and hysteroscopic procedures"
@@ -48,7 +48,7 @@ features:
       label: "Review Surgical Pathways"
       link: "/services/#minimally-invasive-surgery"
   - title: "Fertility, Endocrine & Preventive Women's Health"
-    image: "/images/service-3.png"
+    image: "/images/service.jpg"
     content: "From cycle optimisation and fertility counselling to wellness clinics and HPV vaccination drives, every plan is personalised and data-led."
     bulletpoints:
       - "Couple fertility workups with hormonal and metabolic optimisation"
