@@ -5,14 +5,13 @@ description: "Published research papers and ongoing research projects by Dr. San
 draft: false
 ---
 
-Dr. Sangeeta Pradhan has contributed to medical research through publications in international peer-reviewed journals. Her work focuses on improving maternal and fetal health outcomes and advancing gynecological care.
-
-### Research Focus Areas
-
+Dr. Sangeeta Pradhan has contributed to medical research through publications in international peer-reviewed journals. Her work focuses on improving maternal and fetal health outcomes and advancing gynecological care. Research focus areas of her are:
 - Hypertensive disorders of pregnancy and biomarkers for early prediction
 - Minimally invasive gynecologic surgery and oncogynecology protocols
 - Maternal-fetal medicine in complex autoimmune and infectious scenarios
 - Longitudinal outcomes and quality of life in high-risk obstetrics
+
+{{< toc >}}
 
 ---
 
@@ -146,11 +145,8 @@ This research was presented at the **Raipur Obstetrics and Gynaecological Societ
 
 {{< /accordion >}}
 
-## Contact for Research Collaborations
 
-For research collaborations, manuscript reviews, or academic discussions, please contact:
-
-**Email:** sangeetapradhan321@gmail.com
+For research collaborations, manuscript reviews, or academic discussions, Drop an email [<i class="fa-solid fa-envelope"></i>]( mailto:sangeetapradhan321@gmail.com)
 
 > _"Advancing medical knowledge through research is essential for providing better care to our patients."_
 >

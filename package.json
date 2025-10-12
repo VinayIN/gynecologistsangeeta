@@ -8,7 +8,7 @@
     "dev": "hugo server",
     "build": "hugo",
     "preview": "hugo server --disableFastRender --navigateToChanged --templateMetrics --templateMetricsHints --watch --forceSyncStatic",
-    "deploy": "hugo --baseURL https://gynecologistsangeeta-website.pages.dev/ && wrangler pages deploy public --branch $(git branch --show-current)",
+    "deploy": "hugo --baseURL https://gynecologistsangeeta.com && wrangler pages deploy public --branch $(git branch --show-current)",
     "deploy:preview": "hugo --baseURL https://preview.gynecologistsangeeta-website.pages.dev/ && wrangler pages deploy public --branch preview",
     "local": "hugo --baseURL http://localhost:8880 && wrangler pages dev public",
     "format": "prettier --write --print-width 250 ."

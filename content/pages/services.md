@@ -7,8 +7,10 @@ draft: false
 
 Dr. Sangeeta Pradhan plans every consultation with clear milestones, multi-disciplinary coordination, and evidence-based protocols. Whether you are preparing for pregnancy, navigating hormonal changes, or seeking surgical expertise, the pathways below describe how the clinic supports you from first visit to follow-up.
 
+{{< toc >}}
+
 {{< notice "info" >}}
-Need to connect with the team right away? [Book an appointment](/contact/) and mention your concern so we can reserve the right clinic slot and share the list of documents to carry.
+Need to connect with the team right away? [Schedule An Appointment <i class="fa-solid fa-link"></i>](/contact) and mention your concern so we can reserve the right clinic slot and share the list of documents to carry.
 {{< /notice >}}
 
 ## High-Risk Pregnancy Care {#high-risk-pregnancy}
