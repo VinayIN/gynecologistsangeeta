@@ -146,7 +146,7 @@ This research was presented at the **Raipur Obstetrics and Gynaecological Societ
 {{< /accordion >}}
 
 
-For research collaborations, manuscript reviews, or academic discussions, Drop an email [<i class="fa-solid fa-envelope"></i>]( mailto:sangeetapradhan321@gmail.com)
+For research collaborations, manuscript reviews, or academic discussions, Drop an email [<i class="fa-solid fa-envelope"></i>]( mailto:contact@gynecologistsangeeta.com)
 
 > _"Advancing medical knowledge through research is essential for providing better care to our patients."_
 >

@@ -37,8 +37,8 @@ description = "Share investigations, receive confirmations, and get travel guida
 [[contact.channels]]
 label = "Email Your Concerns"
 icon = "fa-solid fa-envelope"
-link = "mailto:sangeetapradhan321@gmail.com"
-display = "sangeetapradhan321@gmail.com"
+link = "mailto:contact@gynecologistsangeeta.com"
+display = "contact@gynecologistsangeeta.com"
 description = "Send medical summaries, referral notes, or detailed queries."
 
 [[contact.hours]]
@@ -56,7 +56,7 @@ value = "Hi-Tech Medical College & Hospital, Rasulgarh, Bhubaneswar, Odisha 7510
 map_link = "https://www.google.com/maps/search/?api=1&query=Hi-Tech+Medical+College+Bhubaneswar"
 
 # Communications
-contact_form_action = "mailto:sangeetapradhan321@gmail.com"
+contact_form_action = "mailto:contact@gynecologistsangeeta.com"
 google_tag_manager = ""
 google_adsense = ""
 custom_script = ""
@@ -140,7 +140,7 @@ knows_about = [
 same_as = [
   "https://wa.me/918249012345",
   "tel:+918249012345",
-  "mailto:sangeetapradhan321@gmail.com",
+  "mailto:contact@gynecologistsangeeta.com",
 ]
 
   [local_business.address]

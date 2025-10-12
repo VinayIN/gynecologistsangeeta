@@ -59,7 +59,7 @@ Quality healthcare is a partnership. Patients and caregivers are encouraged to:
 
 We strive to resolve concerns quickly and transparently.
 
-1. Email your concern to [sangeetapradhan321@gmail.com](mailto:sangeetapradhan321@gmail.com) with relevant details and reports.
+1. Email your concern to [contact@gynecologistsangeeta.com](mailto:contact@gynecologistsangeeta.com) with relevant details and reports.
 2. For urgent matters, call [+91 82490 12345](tel:+918249012345) and request to speak with the clinic coordinator.
 3. If an issue remains unresolved, you may escalate it to the Hospital Administration or the Odisha Clinical Establishment authorities as per applicable law.
 

@@ -132,7 +132,7 @@ We may update this Privacy Policy periodically. The "Last Updated" date will ref
 If you have questions about this Privacy Policy or wish to exercise your privacy rights, please contact:
 
 **Dr. Sangeeta Pradhan**  
-Email: sangeetapradhan321@gmail.com
+Email: contact@gynecologistsangeeta.com
 
 ---
 
