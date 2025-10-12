@@ -4,26 +4,6 @@
   "pages_build_output_dir": "public",
   "dev": {
     "ip": "localhost",
-    "port": 1313
-  },
-  "env": {
-    "development": {
-      "vars": {
-        "HUGO_ENVIRONMENT": "development",
-        "HUGO_BASEURL": "http://localhost:1313/"
-      }
-    },
-    "preview": {
-      "vars": {
-        "HUGO_ENVIRONMENT": "preview",
-        "HUGO_BASEURL": "https://preview.gynecologistsangeeta.pages.dev/"
-      }
-    },
-    "production": {
-      "vars": {
-        "HUGO_ENVIRONMENT": "production",
-        "HUGO_BASEURL": "https://gynecologistsangeeta.com/"
-      }
-    }
+    "port": 8880
   }
 }
