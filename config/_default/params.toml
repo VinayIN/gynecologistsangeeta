@@ -14,7 +14,7 @@ copyright = "© 2025 Dr. Sangeeta Pradhan. All rights reserved. Designed & Devel
 [navigation_button]
 enable = true
 label = "Schedule An Appointment"
-link = "tel:+918249012345"
+link = "/contact"
 icon = "fa-solid fa-phone"
 
 [contact]

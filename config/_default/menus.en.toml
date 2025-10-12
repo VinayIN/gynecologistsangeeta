@@ -18,10 +18,6 @@ name = "Research & Publications"
 url = "/publications/"
 weight = 4
 
-[[main]]
-name = "Contact"
-url = "/contact/"
-weight = 5
 
 [[footer]]
 name = "Services"
