@@ -5,10 +5,10 @@
   <div class="container">
     <div class="row justify-center">
       <div class="lg:col-6 md:col-9 mb-8 text-center lg:text-left">
+        <h1 class="mb-4 text-h3 lg:text-h1">{{ .title | markdownify }}</h1>
         {{ with .eyebrow }}
         <p class="mb-4 inline-flex items-center rounded-full bg-light px-5 py-2 text-sm font-semibold uppercase tracking-[0.2em] text-primary">{{ . | markdownify }}</p>
         {{ end }}
-        <h1 class="mb-4 text-h3 lg:text-h1">{{ .title | markdownify }}</h1>
         <p class="mx-auto mb-8 max-w-2xl text-lg lg:mx-0">{{ .content | markdownify }}</p>
         {{ with .points }}
         <ul class="mx-auto mb-10 grid max-w-2xl gap-3 text-left text-base lg:mx-0 lg:max-w-none lg:grid-cols-2">
@@ -20,18 +20,53 @@
           {{ end }}
         </ul>
         {{ end }} {{ with .button }} {{ if .enable }}
-        <a class="btn btn-primary" href="{{ .link | absURL }}" {{ if strings.HasPrefix .link `http` }} target="_blank" rel="noopener" {{ end }}>
-          {{ .label }}
-          <i class="fa fa-arrow-right pl-2"></i>
+        <a class="btn btn-primary inline-flex items-center gap-2" href="{{ .link | absURL }}" {{ if strings.HasPrefix .link `http` }} target="_blank" rel="noopener" {{ end }}>
+          <span>{{ .label }}</span>
+          {{ with .icon }}
+          <i class="{{ . }}"></i>
+          {{ else }}
+          <i class="fa-solid fa-arrow-right"></i>
+          {{ end }}
         </a>
         {{ end }} {{ end }}
       </div>
-      <div class="col-12 lg:col-6">{{ partial "image" (dict "Src" .image "Alt" "Banner image" "Loading" "eager" "Class" "mx-auto lg:ml-auto lg:!max-w-[640px]" "DisplayXL" "720x" ) }}</div>
+      <div class="col-12 lg:col-6">
+        {{ partial "image" (dict "Src" .image "Alt" "Banner image" "Loading" "eager" "Class" "mx-auto h-64 w-64 rounded-full border-4 border-primary/20 object-cover shadow-xl lg:ml-auto lg:h-72 lg:w-72" "DisplayXL" "320x" "DisplayLG" "280x" "DisplayMD" "240x" ) }}
+      </div>
     </div>
   </div>
 </section>
 {{ end }}
 <!-- /Banner -->
+
+<!-- CTA -->
+{{ with .Params.cta }}
+<section class="section">
+  <div class="container">
+    <div class="relative overflow-hidden rounded-3xl px-8 py-14 text-center border-4 border-primary/20 shadow-xl">
+      <div class="relative z-10">
+        <h2 class="mb-4 text-h3">{{ .title | markdownify }}</h2>
+        <p class="mx-auto mb-8 max-w-3xl text-lg text-text-light">{{ .content | markdownify }}</p>
+        {{ with .buttons }}
+        <div class="flex flex-wrap justify-center gap-4">
+          {{ range . }} {{ $variant := cond (eq .variant "outline") "btn-outline-primary" "btn-primary" }} {{ $isExternal := strings.HasPrefix .link "http" }}
+          <a class="btn {{ $variant }} inline-flex items-center justify-center gap-2" href="{{ .link | safeURL }}" {{ if $isExternal }} target="_blank" rel="noopener" {{ end }}>
+            <span>{{ .label }}</span>
+            {{ with .icon }}
+            <i class="{{ . }}"></i>
+            {{ else }}
+            <i class="fa-solid fa-arrow-right"></i>
+            {{ end }}
+          </a>
+          {{ end }}
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
+<!-- /CTA -->
 
 <!-- Features -->
 {{ range $i, $e:= .Params.features }}
@@ -61,9 +96,13 @@
           {{ end }}
         </ul>
         {{ with .button }} {{ if .enable }}
-        <a class="btn btn-primary mt-6" href="{{ .link | absURL }}">
-          {{ .label }}
-          <i class="fa fa-arrow-right pl-2"></i>
+        <a class="btn btn-primary mt-6 inline-flex items-center gap-2" href="{{ .link | absURL }}">
+          <span>{{ .label }}</span>
+          {{ with .icon }}
+          <i class="{{ . }}"></i>
+          {{ else }}
+          <i class="fa-solid fa-arrow-right"></i>
+          {{ end }}
         </a>
         {{ end }} {{ end }}
       </div>
@@ -148,57 +187,4 @@
 {{ end }}
 <!-- /Clinics -->
 
-<!-- CTA -->
-{{ with .Params.cta }}
-<section class="section">
-  <div class="container">
-    <div class="cta-gradient rounded-3xl px-8 py-14 text-center text-white shadow-xl">
-      <h2 class="mb-4 text-h3">{{ .title | markdownify }}</h2>
-      <p class="mx-auto mb-8 max-w-3xl text-lg">{{ .content | markdownify }}</p>
-      {{ with .buttons }}
-      <div class="flex flex-wrap justify-center gap-4">
-        {{ range . }} {{ $variant := cond (eq .variant "outline") "btn-outline-primary" "btn-primary" }} {{ $isExternal := strings.HasPrefix .link "http" }}
-        <a class="btn {{ $variant }}" href="{{ .link | safeURL }}" {{ if $isExternal }} target="_blank" rel="noopener" {{ end }}> {{ .label }} </a>
-        {{ end }}
-      </div>
-      {{ end }}
-    </div>
-  </div>
-</section>
-{{ end }}
-<!-- /CTA -->
-
-<!-- Testimonials -->
-{{ with .Params.testimonials }}
-<section class="section bg-light dark:bg-darkmode-light/40">
-  <div class="container">
-    <div class="row justify-center">
-      <div class="md:col-10 lg:col-8 text-center">
-        <h2 class="mb-4">{{ .title | markdownify }}</h2>
-        {{ with .description }}
-        <p class="mb-10 text-lg text-text-light dark:text-darkmode-text-light">{{ . | markdownify }}</p>
-        {{ end }}
-      </div>
-    </div>
-    <div class="row">
-      {{ range .items }}
-      <div class="md:col-6 xl:col-4">
-        <div class="h-full rounded-3xl bg-white px-7 py-8 shadow-lg dark:bg-darkmode-light">
-          <div class="mb-6 text-primary">
-            <svg width="36" height="24" viewBox="0 0 33 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M1.28375 19.41L0.79375 18.64C1.21375 17.0067 1.75042 15.07 2.40375 12.83C3.05708 10.5433 3.75708 8.28 4.50375 6.04C5.29708 3.75333 6.06708 1.77 6.81375 0.0899959H15.3538C14.9338 2.09666 14.4904 4.26667 14.0238 6.6C13.5571 8.88666 13.1371 11.15 12.7638 13.39C12.4371 15.5833 12.1571 17.59 11.9238 19.41H1.28375ZM31.69 0.0899959L32.18 0.859998C31.76 2.54 31.2233 4.5 30.57 6.74C29.9167 8.98 29.2167 11.2433 28.47 13.53C27.7233 15.77 26.9533 17.73 26.16 19.41H17.69C18.0167 17.9167 18.3433 16.33 18.67 14.65C18.9967 12.9233 19.3 11.22 19.58 9.54C19.9067 7.81333 20.1867 6.15667 20.42 4.57C20.7 2.93666 20.91 1.44333 21.05 0.0899959H31.69Z"
-              />
-            </svg>
-          </div>
-          <blockquote class="text-text-dark dark:text-darkmode-text-dark">{{ .quote | markdownify }}</blockquote>
-          <div class="mt-8 border-t border-border pt-6 text-sm uppercase tracking-widest text-primary dark:border-darkmode-border">{{ .name }} · {{ .context }}</div>
-        </div>
-      </div>
-      {{ end }}
-    </div>
-  </div>
-</section>
-{{ end }}
-<!-- /Testimonials -->
 {{ end }}

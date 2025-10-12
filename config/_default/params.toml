@@ -9,13 +9,57 @@ navbar_fixed = true
 theme_switcher = true
 theme_default = "system"
 mainSections = []
+copyright = "© 2025 Dr. Sangeeta Pradhan. All rights reserved. Designed & Developed by [Binay Pradhan](https://binaypradhan.com)"
+
+[navigation_button]
+enable = true
+label = "Schedule An Appointment"
+link = "tel:+918249012345"
+icon = "fa-solid fa-phone"
+
+[contact]
+intro = "Reach the coordination desk for appointments, report reviews, or urgent updates."
+
+[[contact.channels]]
+label = "Call Dr. Sangeeta"
+icon = "fa-solid fa-phone"
+link = "tel:+918249012345"
+display = "+91 82490 12345"
+description = "Speak with the coordinator for same-day slots or labour alerts."
+
+[[contact.channels]]
+label = "Reach via WhatsApp"
+icon = "fa-brands fa-whatsapp"
+link = "https://wa.me/918249012345"
+display = "Message on WhatsApp"
+description = "Share investigations, receive confirmations, and get travel guidance."
+
+[[contact.channels]]
+label = "Email Your Concerns"
+icon = "fa-solid fa-envelope"
+link = "mailto:sangeetapradhan321@gmail.com"
+display = "sangeetapradhan321@gmail.com"
+description = "Send medical summaries, referral notes, or detailed queries."
+
+[[contact.hours]]
+label = "OPD"
+value = "Mon–Sat · 9:00 AM – 7:00 PM"
+
+[[contact.hours]]
+label = "Emergency"
+value = "Obstetric support 24/7 at your location with prior intimation"
+
+[contact.location]
+label = "Hospital Address"
+icon = "fa-solid fa-location-dot"
+value = "Hi-Tech Medical College & Hospital, Rasulgarh, Bhubaneswar, Odisha 751025"
+map_link = "https://www.google.com/maps/search/?api=1&query=Hi-Tech+Medical+College+Bhubaneswar"
 
 # Communications
 contact_form_action = "mailto:sangeetapradhan321@gmail.com"
 google_tag_manager = ""
 google_adsense = ""
 custom_script = ""
-copyright = "© 2025 Dr. Sangeeta Pradhan. All rights reserved. Designed & Developed by [Binay Pradhan](https://binaypradhan.com)"
 
 # Asset bundles
 [[plugins.css]]

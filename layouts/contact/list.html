@@ -2,25 +2,93 @@
 
 <section class="section-sm">
   <div class="container">
-    <div class="row">
-      <div class="md:col-10 lg:col-6 mx-auto">
-        <form action="{{ site.Params.contact_form_action }}" method="POST">
-          <div class="mb-6">
-            <label for="name" class="form-label"> Full Name <span class="text-red-500">*</span> </label>
-            <input id="name" name="name" class="form-input" placeholder="John Doe" type="text" />
+    <div class="row gap-y-12">
+      <div class="lg:col-5">
+        {{ $contact := site.Params.contact }}
+        <div class="space-y-6">
+          <div>
+            <h2 class="mb-3 text-xl font-semibold text-text-dark dark:text-darkmode-text-dark">Talk to the coordination desk</h2>
+            {{ with $contact.intro }}
+            <p class="text-sm text-text-light dark:text-darkmode-text-light">{{ . }}</p>
+            {{ end }}
           </div>
-          <div class="mb-6">
-            <label for="email" class="form-label"> Working Mail <span class="text-red-500">*</span> </label>
-            <input id="email" name="email" class="form-input" placeholder="john.doe@email.com" type="email" />
+          {{ with $contact.channels }}
+          <div class="space-y-4">
+            {{ range . }}
+            {{ $isExternal := strings.HasPrefix .link "http" }}
+            <a
+              class="flex items-start gap-3 rounded-3xl border border-border bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-darkmode-border dark:bg-darkmode-light"
+              href="{{ .link | safeURL }}"
+              {{ if $isExternal }} target="_blank" rel="noopener" {{ end }}
+            >
+              <span class="flex h-11 w-11 flex-none items-center justify-center rounded-full bg-primary/10 text-lg text-primary dark:bg-darkmode-border/40">
+                <i class="{{ .icon }}"></i>
+              </span>
+              <span class="flex flex-col gap-1">
+                <span class="font-semibold text-text-dark dark:text-darkmode-text-dark">{{ .display }}</span>
+                {{ with .description }}<span class="text-xs text-text-light dark:text-darkmode-text-light">{{ . }}</span>{{ end }}
+              </span>
+            </a>
+            {{ end }}
           </div>
-          <div class="mb-6">
-            <label for="message" class="form-label"> Anything else? <span class="text-red-500">*</span> </label>
-            <textarea id="message" name="message" class="form-input" placeholder="Message goes here..." rows="8"></textarea>
+          {{ end }}
+          {{ with $contact.hours }}
+          <div>
+            <h3 class="mb-3 text-sm font-semibold uppercase tracking-widest text-primary">Office Hours</h3>
+            <ul class="space-y-2 text-sm text-text-light dark:text-darkmode-text-light">
+              {{ range . }}
+              <li class="flex items-start gap-3">
+                <i class="fa-solid fa-clock mt-1 text-primary"></i>
+                <span><span class="font-semibold text-text-dark dark:text-darkmode-text-dark">{{ .label }}:</span> {{ .value }}</span>
+              </li>
+              {{ end }}
+            </ul>
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+          {{ end }}
+          {{ with $contact.location }}
+          <div>
+            <h3 class="mb-3 text-sm font-semibold uppercase tracking-widest text-primary">{{ .label }}</h3>
+            <p class="text-sm text-text-light dark:text-darkmode-text-light">{{ .value }}</p>
+            {{ with .map_link }}
+            <a class="mt-2 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80 dark:text-darkmode-primary" href="{{ . | safeURL }}" target="_blank" rel="noopener">
+              <i class="fa-solid fa-location-dot"></i>
+              View on Google Maps
+            </a>
+            {{ end }}
+          </div>
+          {{ end }}
+        </div>
+      </div>
+  <div class="md:col-10 lg:col-6 mx-auto">
+        <div class="rounded-3xl border border-border bg-white p-6 dark:border-darkmode-border dark:bg-darkmode-light">
+          <form action="{{ site.Params.contact_form_action }}" method="POST">
+            <div class="mb-4">
+              <label for="name" class="form-label"> Full Name <span class="text-red-500">*</span> </label>
+              <input id="name" name="name" class="form-input" placeholder="Full name" type="text" required />
+            </div>
+            <div class="mb-4">
+              <label for="email" class="form-label"> Email Address <span class="text-red-500">*</span> </label>
+              <input id="email" name="email" class="form-input" placeholder="you@email.com" type="email" required />
+            </div>
+            <div class="mb-6">
+              <label for="message" class="form-label"> How can we help? <span class="text-red-500">*</span> </label>
+              <textarea id="message" name="message" class="form-input" placeholder="Share your concern, preferred time, and reports." rows="6" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary inline-flex items-center gap-2">
+              <span>Send Message</span>
+              <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
       </div>
     </div>
+    {{ with .Content }}
+    <div class="row mt-14 justify-center">
+      <div class="lg:col-10">
+        <div class="content">{{ . }}</div>
+      </div>
+    </div>
+    {{ end }}
   </div>
 </section>
 
