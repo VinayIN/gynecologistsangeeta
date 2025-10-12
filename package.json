@@ -6,8 +6,11 @@
   "author": "Binay Pradhan",
   "scripts": {
     "dev": "hugo server",
-    "build": "hugo --gc --minify --templateMetrics --templateMetricsHints --forceSyncStatic",
-    "preview": "hugo server --disableFastRender --navigateToChanged --templateMetrics --templateMetricsHints --watch --forceSyncStatic -e production --minify",
+    "build": "hugo",
+    "preview": "hugo server --disableFastRender --navigateToChanged --templateMetrics --templateMetricsHints --watch --forceSyncStatic",
+    "deploy": "wrangler pages deploy public",
+    "deploy:preview": "wrangler pages deploy public --branch $(git branch --show-current)",
+    "local": "wrangler pages dev public",
     "format": "prettier --write --print-width 250 ."
   },
   "devDependencies": {
@@ -16,6 +19,7 @@
     "@tailwindcss/typography": "^0.5.19",
     "prettier": "^3.6.2",
     "prettier-plugin-go-template": "0.0.15",
-    "prettier-plugin-tailwindcss": "^0.6.14"
+    "prettier-plugin-tailwindcss": "^0.6.14",
+    "wrangler": "^4.42.2"
   }
 }
