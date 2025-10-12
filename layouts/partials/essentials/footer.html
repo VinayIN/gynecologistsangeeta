@@ -1,0 +1,85 @@
+<footer class="bg-light dark:bg-darkmode-light">
+  <div class="container">
+    <div class="row justify-between gap-y-10 py-12">
+      <div class="lg:col-4 text-center lg:text-left">
+        <a class="navbar-brand inline-flex items-center" href="{{ site.Home.RelPermalink }}"> {{ partial "logo" }} </a>
+        <p class="mt-4 text-sm text-text-light dark:text-darkmode-text-light lg:max-w-sm">
+          AIIMS-trained gynecologist supporting respectful birthing, minimally invasive gynecology, fertility optimisation, and preventive women's health across Odisha.
+        </p>
+        {{ with site.Params.navigation_button }} {{ if .enable }} {{ $ctaLink := .link }} {{ if and $ctaLink (not (or (strings.HasPrefix $ctaLink "http") (strings.HasPrefix $ctaLink "mailto:") (strings.HasPrefix $ctaLink "tel:") (strings.HasPrefix
+        $ctaLink "#"))) }} {{ $ctaLink = relLangURL $ctaLink }} {{ end }}
+        <div class="mt-6">
+          <a class="btn btn-primary" href="{{ $ctaLink }}">{{ .label }}</a>
+        </div>
+        {{ end }} {{ end }}
+      </div>
+      <div class="lg:col-3 text-center lg:text-left">
+        <h3 class="mb-4 text-base font-semibold uppercase tracking-widest text-primary">Quick Links</h3>
+        <ul class="space-y-3 text-sm">
+          {{ range site.Menus.footer }}
+          <li>
+            <a
+              class="hover:text-primary dark:hover:text-darkmode-primary"
+              {{
+              if
+              findRE
+              `^http`
+              .URL
+              }}
+              target="_blank"
+              rel="noopener"
+              {{
+              end
+              }}
+              href="{{ if findRE `^#` .URL }}
+                  {{ if not $.IsHome }}
+                    {{ site.Home.RelPermalink }}
+                  {{ end }}{{ .URL }}
+                {{ else }}
+                  {{ .URL | relLangURL }}
+                {{ end }}"
+              >{{ .Name }}</a
+            >
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+      <div class="lg:col-4 text-center lg:text-left">
+        <h3 class="mb-4 text-base font-semibold uppercase tracking-widest text-primary">Clinic Coordination</h3>
+        <ul class="space-y-3 text-sm text-text-light dark:text-darkmode-text-light">
+          <li class="flex flex-col gap-1 lg:flex-row lg:items-center lg:gap-3">
+            <span class="font-semibold text-text-dark dark:text-darkmode-text-dark">Call:</span>
+            <a class="hover:text-primary" href="tel:+918249012345">+91 82490 12345</a>
+          </li>
+          <li class="flex flex-col gap-1 lg:flex-row lg:items-center lg:gap-3">
+            <span class="font-semibold text-text-dark dark:text-darkmode-text-dark">WhatsApp:</span>
+            <a class="hover:text-primary" href="https://wa.me/918249012345" target="_blank" rel="noopener">Message the coordination team</a>
+          </li>
+          <li class="flex flex-col gap-1 lg:flex-row lg:items-center lg:gap-3">
+            <span class="font-semibold text-text-dark dark:text-darkmode-text-dark">Email:</span>
+            <a class="hover:text-primary" href="mailto:sangeetapradhan321@gmail.com">sangeetapradhan321@gmail.com</a>
+          </li>
+          <li>
+            <span class="font-semibold text-text-dark dark:text-darkmode-text-dark">OPD Hours:</span>
+            <p>Monday – Saturday, 9:00 AM – 1:00 PM & 5:00 PM – 8:00 PM (by appointment)</p>
+          </li>
+        </ul>
+        <ul class="social-icons mt-6 justify-center lg:justify-start">
+          {{ range site.Data.social.main }}
+          <li>
+            <a target="_blank" aria-label="{{ .name }}" rel="nofollow noopener" href="{{ .link | safeURL }}">
+              <i class="{{ .icon }}"></i>
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="border-border dark:border-darkmode-border border-t py-7">
+    <div class="container flex flex-col gap-4 text-center text-sm text-text-light dark:text-darkmode-text-light md:flex-row md:items-center md:justify-between">
+      <p class="m-0">{{ site.Params.copyright | markdownify }}</p>
+      <p class="m-0">Emergency obstetric support is coordinated 24/7 — please call before you travel.</p>
+    </div>
+  </div>
+</footer>

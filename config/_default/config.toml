@@ -1,0 +1,109 @@
+
+baseURL = "https://gynecologistsangeeta.com/"
+title = "Dr. Sangeeta Pradhan | Gynecologist in Bhubaneswar"
+enableEmoji = true
+summaryLength = 24
+canonifyURLs = true
+languageCode = "en-us"
+timeZone = "Asia/Kolkata"
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
+enableInlineShortcodes = true
+enableRobotsTXT = true
+
+[permalinks]
+  pages = "/:slugorcontentbasename/"
+
+[pagination]
+  pagerSize = 10
+  path = "page"
+
+[build]
+  writeStats = true
+  cleanDestinationDir = true
+  [build.buildStats]
+    enable = true
+  [[build.cachebusters]]
+    source = "assets/notwatching/hugo_stats\\.json"
+    target = "css"
+  [[build.cachebusters]]
+    source = "(postcss|tailwind)\\.config\\.(js|cjs|mjs|ts)"
+    target = "css"
+
+[module]
+  [[module.mounts]]
+    source = "assets"
+    target = "assets"
+  [[module.mounts]]
+    source = "hugo_stats.json"
+    target = "assets/notwatching/hugo_stats.json"
+    disableWatch = true
+
+[outputs]
+  home = ["HTML", "RSS", "WebAppManifest", "SearchIndex"]
+  section = ["HTML", "RSS"]
+  page = ["HTML"]
+
+[services]
+  [services.googleAnalytics]
+    ID = ""
+
+[imaging]
+  quality = 80
+  resampleFilter = "Lanczos"
+
+[caches]
+  [caches.images]
+    dir = ":resourceDir/_gen"
+    maxAge = "720h"
+  [caches.assets]
+    dir = ":resourceDir/_gen"
+    maxAge = "720h"
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.highlight]
+    lineNumbersInTable = false
+    style = "monokai"
+
+[mediaTypes]
+  [mediaTypes."application/manifest+json"]
+    suffixes = ["webmanifest"]
+
+[outputFormats]
+  [outputFormats.WebAppManifest]
+    mediaType = "application/manifest+json"
+    rel = "manifest"
+  [outputFormats.SearchIndex]
+    baseName = "searchindex"
+    mediaType = "application/json"
+    isPlainText = true
+    notAlternative = true
+
+[minify]
+  disableXML = false
+  [minify.tdewolff.html]
+    keepWhitespace = false
+  [minify.tdewolff.css]
+    keepWhitespace = false
+  [minify.tdewolff.js]
+    keepVarNames = false
+
+[sitemap]
+  changefreq = "weekly"
+  filename = "sitemap.xml"
+  priority = 0.7
+
+[privacy]
+  [privacy.googleAnalytics]
+    anonymizeIP = true
+    respectDoNotTrack = true
+    useSessionStorage = false
+  [privacy.youtube]
+    disable = true
+
+[security]
+  [security.contentSecurityPolicy]
+    reportOnly = false
+    value = "default-src 'self'; img-src 'self' data: https:; font-src 'self' https://use.fontawesome.com https://fonts.gstatic.com; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com; frame-src https://www.youtube.com https://player.vimeo.com;"

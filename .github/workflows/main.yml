@@ -21,10 +21,7 @@ defaults:
 env:
   HUGO_ENV: production
   HUGO_VERSION: "0.151.0"
-  GO_VERSION: "1.23.3"
-  TINA_CLIENT_ID: ${{ secrets.TINA_CLIENT_ID }}
-  TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
-  TINA_SEARCH_TOKEN: ${{ secrets.TINA_SEARCH_TOKEN }}
+  GO_VERSION: "1.25.0"
 
 jobs:
   # Build job

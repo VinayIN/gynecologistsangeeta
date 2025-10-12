@@ -1,0 +1,69 @@
+<!-- DNS Preconnect -->
+<meta http-equiv="x-dns-prefetch-control" content="on" />
+<link rel="preconnect" href="https://use.fontawesome.com" crossorigin />
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+<link rel="preconnect" href="https://www.googletagmanager.com" />
+<link rel="preconnect" href="https://www.google-analytics.com" />
+<link rel="dns-prefetch" href="https://use.fontawesome.com" />
+<link rel="dns-prefetch" href="https://ajax.googleapis.com" />
+<link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+<link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+<link rel="dns-prefetch" href="https://www.google-analytics.com" />
+<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+<link rel="dns-prefetch" href="https://connect.facebook.net" />
+<link rel="dns-prefetch" href="https://platform.linkedin.com" />
+<link rel="dns-prefetch" href="https://platform.twitter.com" />
+
+<!-- Google Fonts -->
+{{ $primaryFont := site.Data.theme.fonts.font_family.primary }} {{ $secondaryFont := site.Data.theme.fonts.font_family.secondary }} {{ $secondaryQuery := "" }} {{ with $secondaryFont }} {{ $secondaryQuery = printf "&family=%s" (. | urlquery) }} {{
+end }} {{ $googleFontURL := printf "https://fonts.googleapis.com/css2?family=%s%s&display=swap" ($primaryFont | urlquery) $secondaryQuery }}
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<script>
+  (function () {
+    const linkEl = document.createElement("link");
+    linkEl.href = "{{ $googleFontURL }}";
+    linkEl.rel = "stylesheet";
+    linkEl.type = "text/css";
+    document.head.appendChild(linkEl);
+  })();
+</script>
+
+<!-- Collect Configured Styles -->
+{{ $styles := slice }} {{ $stylesLazy := slice }} {{ $externalStyles := slice }} {{ $externalLazy := slice }} {{ range site.Params.plugins.css }} {{ $resource := resources.Get .link }} {{ if $resource }} {{ if .lazy }} {{ $stylesLazy = $stylesLazy |
+append $resource }} {{ else }} {{ $styles = $styles | append $resource }} {{ end }} {{ else }} {{ $href := .link }} {{ if not (strings.HasPrefix $href "http") }} {{ $href = relURL $href }} {{ end }} {{ $entry := dict "href" $href "attributes"
+.attributes }} {{ if .lazy }} {{ $externalLazy = $externalLazy | append $entry }} {{ else }} {{ $externalStyles = $externalStyles | append $entry }} {{ end }} {{ end }} {{ end }}
+
+<!-- Tailwind Build Output -->
+{{ with resources.Get "css/main.css" }} {{ $tailwindOpts := dict "minify" (not hugo.IsDevelopment) }} {{ with . | css.TailwindCSS $tailwindOpts }} {{ $styles = $styles | append . }} {{ end }} {{ else }} {{ warnf "assets/css/main.css not found" }} {{
+end }}
+
+<!-- Concatenate and Fingerprint -->
+{{ if gt (len $styles) 0 }} {{ $styles = $styles | resources.Concat "css/style.css" }} {{ if hugo.IsProduction }} {{ $styles = $styles | minify | fingerprint }} {{ end }} {{ end }} {{ if gt (len $stylesLazy) 0 }} {{ $stylesLazy = $stylesLazy |
+resources.Concat "css/style-lazy.css" }} {{ if hugo.IsProduction }} {{ $stylesLazy = $stylesLazy | minify | fingerprint }} {{ end }} {{ end }}
+
+<!-- External Styles -->
+{{ range $externalStyles }}
+<link rel="stylesheet" href="{{ .href }}" {{ with .attributes }}{{ . | safeHTMLAttr }}{{ end }} />
+{{ end }}
+
+<!-- Critical Stylesheet -->
+{{ if $styles }} {{ $integrity := "" }} {{ if hugo.IsProduction }} {{ $integrity = $styles.Data.Integrity }} {{ end }}
+<link rel="stylesheet" href="{{ $styles.RelPermalink }}" {{ if $integrity }} crossorigin="anonymous" integrity="{{ $integrity }}" {{ end }} />
+{{ end }}
+
+<!-- Deferred Styles -->
+{{ if $stylesLazy }} {{ $integrityLazy := "" }} {{ if hugo.IsProduction }} {{ $integrityLazy = $stylesLazy.Data.Integrity }} {{ end }}
+<link rel="stylesheet" href="{{ $stylesLazy.RelPermalink }}" media="print" onload="this.media='all'; this.onload=null;" {{ if $integrityLazy }} crossorigin="anonymous" integrity="{{ $integrityLazy }}" {{ end }} />
+<noscript>
+  <link rel="stylesheet" href="{{ $stylesLazy.RelPermalink }}" />
+</noscript>
+{{ end }}
+
+<!-- External Deferred Styles -->
+{{ range $externalLazy }}
+<link rel="stylesheet" href="{{ .href }}" media="print" onload="this.media='all'; this.onload=null;" {{ with .attributes }}{{ . | safeHTMLAttr }}{{ end }} />
+<noscript>
+  <link rel="stylesheet" href="{{ .href }}" {{ with .attributes }}{{ . | safeHTMLAttr }}{{ end }} />
+</noscript>
+{{ end }}

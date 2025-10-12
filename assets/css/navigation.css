@@ -1,0 +1,77 @@
+.header {
+  @apply bg-body dark:bg-darkmode-body py-6 transition-colors duration-300 ease-in-out border-b border-transparent dark:border-transparent;
+}
+
+.header.is-scrolled {
+  @apply bg-surface dark:bg-darkmode-surface shadow-lg backdrop-blur-sm border-border dark:border-darkmode-border;
+}
+
+/* navbar items */
+.navbar {
+  @apply relative flex flex-wrap items-center justify-between;
+}
+
+.navbar-brand {
+  @apply text-text-dark dark:text-darkmode-text-dark text-xl font-semibold;
+}
+
+.navbar-brand image {
+  @apply max-h-full max-w-full;
+}
+
+.navbar-nav {
+  @apply text-center lg:text-left;
+}
+
+.nav-link {
+  @apply text-text-dark hover:text-primary dark:text-darkmode-text-dark dark:hover:text-darkmode-primary block p-3 cursor-pointer font-semibold transition lg:px-2 lg:py-3;
+}
+
+.nav-dropdown {
+  @apply mr-0;
+}
+
+.nav-dropdown > svg {
+  @apply pointer-events-none;
+}
+
+.nav-dropdown-list {
+  @apply bg-body dark:bg-darkmode-body z-10 min-w-[180px] rounded p-4 shadow-sm;
+}
+
+.nav-dropdown-item {
+  @apply [&:not(:last-child)]:mb-2;
+}
+
+.nav-dropdown-link {
+  @apply text-text-dark hover:text-primary dark:text-darkmode-text dark:hover:text-darkmode-primary block py-1 font-semibold transition;
+}
+
+/* theme-switcher */
+.theme-switcher {
+  @apply inline-flex;
+}
+
+.theme-switcher .theme-toggle {
+  @apply inline-flex h-8 w-8 items-center justify-center rounded-full border border-border text-text-dark transition dark:border-darkmode-border dark:text-darkmode-text;
+}
+
+.theme-switcher .theme-toggle:is(:hover, :focus-visible) {
+  @apply border-primary text-primary dark:border-darkmode-primary dark:text-darkmode-primary;
+}
+
+.theme-switcher .theme-toggle.is-dark {
+  @apply border-primary text-primary dark:border-darkmode-primary dark:text-darkmode-primary;
+}
+
+.theme-switcher .theme-icon {
+  @apply h-4 w-4;
+}
+
+.theme-switcher .theme-icon-moon {
+  @apply hidden dark:inline;
+}
+
+.theme-switcher .theme-icon-sun {
+  @apply inline dark:hidden;
+}

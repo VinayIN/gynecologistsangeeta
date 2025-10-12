@@ -1,0 +1,44 @@
+[[main]]
+name = "Home"
+url = "/"
+weight = 1
+
+[[main]]
+name = "Know Dr. Sangeeta"
+url = "/know-me/"
+weight = 2
+
+[[main]]
+name = "Services"
+url = "/services/"
+weight = 3
+
+[[main]]
+name = "Research & Publications"
+url = "/publications/"
+weight = 4
+
+[[main]]
+name = "Contact"
+url = "/contact/"
+weight = 5
+
+[[footer]]
+name = "Services"
+url = "/services/"
+weight = 1
+
+[[footer]]
+name = "Patient Rights"
+url = "/patients-right/"
+weight = 2
+
+[[footer]]
+name = "Privacy Policy"
+url = "/privacy-policy/"
+weight = 3
+
+[[footer]]
+name = "Contact"
+url = "/contact/"
+weight = 4

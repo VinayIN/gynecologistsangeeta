@@ -1,0 +1,128 @@
+<!-- Logo Configuration -->
+{{ $lightPath := site.Params.logo | default "images/logo.png" }}
+{{ $darkPath := site.Params.logo_darkmode | default "" }}
+{{ if not $darkPath }}
+  {{ $darkPath = $lightPath }}
+{{ end }}
+
+<!-- Logo Dimensions -->
+{{ $width := site.Params.logo_width }}
+{{ $height := site.Params.logo_height }}
+{{ $widthAttr := "" }}
+{{ if $width }}
+  {{ $numeric := findRE "^[0-9]+$" $width }}
+  {{ $px := findRE "^[0-9]+px$" $width }}
+  {{ if $numeric }}
+    {{ $widthAttr = index $numeric 0 }}
+  {{ else if $px }}
+    {{ $widthAttr = strings.TrimSuffix "px" (index $px 0) }}
+  {{ end }}
+{{ end }}
+{{ $heightAttr := "" }}
+{{ if $height }}
+  {{ $numeric := findRE "^[0-9]+$" $height }}
+  {{ $px := findRE "^[0-9]+px$" $height }}
+  {{ if $numeric }}
+    {{ $heightAttr = index $numeric 0 }}
+  {{ else if $px }}
+    {{ $heightAttr = strings.TrimSuffix "px" (index $px 0) }}
+  {{ end }}
+{{ end }}
+
+<!-- WebP Support -->
+{{ $allowWebp := site.Params.logo_webp | default false }}
+{{ $lightResource := resources.Get $lightPath }}
+{{ if and (ne $lightPath "") (not $lightResource) }}
+  {{ warnf "Logo asset %s not found" $lightPath }}
+{{ end }}
+{{ $darkResource := resources.Get $darkPath }}
+{{ if not $darkResource }}
+  {{ $darkPath = $lightPath }}
+  {{ $darkResource = $lightResource }}
+{{ end }}
+{{ $lightWebp := false }}
+{{ if and $allowWebp $lightResource (eq $lightResource.MediaType.SubType "webp") }}
+  {{ $lightWebp = $lightResource }}
+{{ end }}
+{{ $darkWebp := false }}
+{{ if and $allowWebp $darkResource (ne $darkResource $lightResource) (eq $darkResource.MediaType.SubType "webp") }}
+  {{ $darkWebp = $darkResource }}
+{{ else if eq $darkResource $lightResource }}
+  {{ $darkWebp = $lightWebp }}
+{{ end }}
+
+<!-- Logo Display -->
+<span class="inline-flex items-center">
+  <!-- Light Mode Logo -->
+  {{ if $lightResource }}
+    <picture class="max-h-full dark:hidden">
+      {{ with $lightWebp }}
+        <source srcset="{{ .RelPermalink }}" type="image/webp" />
+      {{ end }}
+      <img
+        class="max-h-full"
+        src="{{ $lightResource.RelPermalink }}"
+        alt="{{ site.Title }} logo"
+        {{ if $widthAttr }}width="{{ $widthAttr }}"{{ end }}
+        {{ if $heightAttr }}height="{{ $heightAttr }}"{{ end }}
+      />
+    </picture>
+  {{ else }}
+    <img
+      class="max-h-full dark:hidden"
+      src="{{ $lightPath | relURL }}"
+      alt="{{ site.Title }} logo"
+      {{ if $widthAttr }}width="{{ $widthAttr }}"{{ end }}
+      {{ if $heightAttr }}height="{{ $heightAttr }}"{{ end }}
+    />
+  {{ end }}
+
+  <!-- Dark Mode Logo -->
+  {{ if $darkResource }}
+    {{ if eq $darkPath $lightPath }}
+      <picture class="hidden max-h-full dark:inline-block">
+        {{ with $lightWebp }}
+          <source srcset="{{ .RelPermalink }}" type="image/webp" />
+        {{ end }}
+        {{ if $lightResource }}
+          <img
+            class="max-h-full"
+            src="{{ $lightResource.RelPermalink }}"
+            alt="{{ site.Title }} logo"
+            {{ if $widthAttr }}width="{{ $widthAttr }}"{{ end }}
+            {{ if $heightAttr }}height="{{ $heightAttr }}"{{ end }}
+          />
+        {{ else }}
+          <img
+            class="max-h-full"
+            src="{{ $lightPath | relURL }}"
+            alt="{{ site.Title }} logo"
+            {{ if $widthAttr }}width="{{ $widthAttr }}"{{ end }}
+            {{ if $heightAttr }}height="{{ $heightAttr }}"{{ end }}
+          />
+        {{ end }}
+      </picture>
+    {{ else }}
+      <picture class="hidden max-h-full dark:inline-block">
+        {{ with $darkWebp }}
+          <source srcset="{{ .RelPermalink }}" type="image/webp" />
+        {{ end }}
+        <img
+          class="max-h-full"
+          src="{{ $darkResource.RelPermalink }}"
+          alt="{{ site.Title }} logo dark mode"
+          {{ if $widthAttr }}width="{{ $widthAttr }}"{{ end }}
+          {{ if $heightAttr }}height="{{ $heightAttr }}"{{ end }}
+        />
+      </picture>
+    {{ end }}
+  {{ else }}
+    <img
+      class="hidden max-h-full dark:inline-block"
+      src="{{ $darkPath | relURL }}"
+      alt="{{ site.Title }} logo dark mode"
+      {{ if $widthAttr }}width="{{ $widthAttr }}"{{ end }}
+      {{ if $heightAttr }}height="{{ $heightAttr }}"{{ end }}
+    />
+  {{ end }}
+</span>

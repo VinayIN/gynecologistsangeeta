@@ -1,0 +1,33 @@
+{{ define "main" }} {{ partial "page-header" . }}
+
+<section class="section">
+  <div class="container">
+    {{ with .Content }}
+    <div class="mx-auto mb-12 max-w-3xl text-lg text-text-light dark:text-darkmode-text-light prose dark:prose-invert">{{ . }}</div>
+    {{ end }} {{ $pages := .RegularPagesRecursive.ByWeight }} {{ $paginator := .Paginate $pages }}
+    <div class="row gap-y-10">
+      {{ range $paginator.Pages }} {{ $page := . }}
+      <article class="md:col-6 xl:col-4">
+        <div class="flex h-full flex-col rounded-3xl bg-light p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-lg dark:bg-darkmode-light">
+          {{ with $page.Params.image }}
+          <div class="mb-6 overflow-hidden rounded-2xl">{{ partial "image" (dict "Src" . "Context" $page "Alt" $page.Title "DisplayLG" "520x" "DisplayMD" "360x" "Class" "w-full object-cover") }}</div>
+          {{ end }}
+          <h3 class="mb-3 text-xl font-semibold text-text-dark dark:text-darkmode-text-dark">
+            <a class="hover:text-primary dark:hover:text-darkmode-primary" href="{{ $page.RelPermalink }}">{{ $page.Title }}</a>
+          </h3>
+          {{ $summary := $page.Summary }} {{ if not $summary }} {{ $summary = $page.Plain | truncate 160 }} {{ end }}
+          <p class="mb-6 text-sm text-text-light dark:text-darkmode-text-light">{{ $summary | plainify }}</p>
+          <div class="mt-auto flex flex-wrap items-center gap-4 text-xs uppercase tracking-widest text-primary">
+            <span>{{ $page.Date.Format "02 Jan 2006" }}</span>
+            <span>·</span>
+            <span>{{ $page.ReadingTime }} min read</span>
+          </div>
+        </div>
+      </article>
+      {{ end }}
+    </div>
+
+    {{ if gt $paginator.TotalPages 1 }} {{ partial "components/pagination" (dict "Paginator" $paginator "Class" "mt-16 justify-center") }} {{ end }}
+  </div>
+</section>
+{{ end }}

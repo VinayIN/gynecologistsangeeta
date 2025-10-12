@@ -1,0 +1,19 @@
+{
+  "main": [
+    {
+      "name": "WhatsApp",
+      "icon": "fab fa-whatsapp",
+      "link": "https://wa.me/918249012345"
+    },
+    {
+      "name": "Phone",
+      "icon": "fa-solid fa-phone",
+      "link": "tel:+918249012345"
+    },
+    {
+      "name": "Email",
+      "icon": "fa-solid fa-envelope",
+      "link": "mailto:sangeetapradhan321@gmail.com"
+    }
+  ]
+}

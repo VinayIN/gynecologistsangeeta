@@ -1,0 +1,18 @@
+{{- $lb := site.Params.local_business -}} {{- if and $lb $lb.enable -}} {{- $scratch := newScratch -}} {{- $scratch.Set "openingHours" (slice) -}} {{- range $lb.opening_hours -}} {{- if and .day .opens .closes -}} {{- $scratch.Set "openingHours"
+($scratch.Get "openingHours" | append (printf "%s %s-%s" .day .opens .closes)) -}} {{- end -}} {{- end -}} {{- $scratch.Set "sameAs" (slice) -}} {{- range $lb.same_as -}} {{- $same := . -}} {{- if and $same (not (strings.HasPrefix $same "http")) (not
+(strings.HasPrefix $same "mailto:")) (not (strings.HasPrefix $same "tel:")) -}} {{- $same = absURL $same -}} {{- end -}} {{- $scratch.Set "sameAs" ($scratch.Get "sameAs" | append $same) -}} {{- end -}} {{- if $lb.telephone -}} {{- $scratch.Set
+"contactPoint" (dict "@type" "ContactPoint" "telephone" $lb.telephone "contactType" "Customer Service" "areaServed" (slice "IN")) -}} {{- end -}} {{- with $lb.address -}} {{- $scratch.Set "address" (dict "@type" "PostalAddress" "streetAddress"
+.street "addressLocality" .locality "addressRegion" .region "postalCode" .postal_code "addressCountry" .country ) -}} {{- end -}} {{- with $lb.geo -}} {{- if and .latitude .longitude -}} {{- $scratch.Set "geo" (dict "@type" "GeoCoordinates"
+"latitude" .latitude "longitude" .longitude) -}} {{- end -}} {{- end -}} {{- $id := $lb.id | default (printf "%s#medical-clinic" site.BaseURL) -}} {{- $rawURL := $lb.url | default site.BaseURL -}} {{- $logo := $lb.logo | default site.Params.logo -}}
+{{- $image := $lb.image | default site.Params.metadata.image -}} {{- $openingHours := $scratch.Get "openingHours" -}} {{- $sameAs := $scratch.Get "sameAs" -}} {{- $contactPoint := $scratch.Get "contactPoint" -}} {{- $address := $scratch.Get "address"
+-}} {{- $geo := $scratch.Get "geo" -}} {{- $schema := dict "@context" "https://schema.org" "@type" ($lb.type | default "LocalBusiness") "@id" $id "name" ($lb.name | default site.Title) "description" ($lb.description | default
+site.Params.metadata.description) "url" (absURL $rawURL) -}} {{- if $logo -}} {{- $schema = merge $schema (dict "logo" (absURL $logo)) -}} {{- end -}} {{- if $image -}} {{- $schema = merge $schema (dict "image" (slice (absURL $image))) -}} {{- end
+-}} {{- if gt (len $openingHours) 0 -}} {{- $schema = merge $schema (dict "openingHours" $openingHours) -}} {{- end -}} {{- if gt (len $sameAs) 0 -}} {{- $schema = merge $schema (dict "sameAs" $sameAs) -}} {{- end -}} {{- if $lb.has_map -}} {{-
+$schema = merge $schema (dict "hasMap" $lb.has_map) -}} {{- end -}} {{- if $lb.telephone -}} {{- $schema = merge $schema (dict "telephone" $lb.telephone) -}} {{- end -}} {{- if $lb.price_range -}} {{- $schema = merge $schema (dict "priceRange"
+$lb.price_range) -}} {{- end -}} {{- if $lb.founder -}} {{- $schema = merge $schema (dict "founder" $lb.founder) -}} {{- end -}} {{- if gt (len $lb.area_served) 0 -}} {{- $schema = merge $schema (dict "areaServed" $lb.area_served) -}} {{- end -}} {{-
+if gt (len $lb.knows_about) 0 -}} {{- $schema = merge $schema (dict "knowsAbout" $lb.knows_about) -}} {{- end -}} {{- if $address -}} {{- $schema = merge $schema (dict "address" $address) -}} {{- end -}} {{- if $geo -}} {{- $schema = merge $schema
+(dict "geo" $geo) -}} {{- end -}} {{- if $contactPoint -}} {{- $schema = merge $schema (dict "contactPoint" (slice $contactPoint)) -}} {{- end -}}
+<script type="application/ld+json">
+  {{ $schema | jsonify }}
+</script>
+{{- end -}}

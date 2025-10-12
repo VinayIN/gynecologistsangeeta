@@ -1,0 +1,21 @@
+{
+  "name": "gynecologistsangeeta",
+  "description": "Dr. Sangeeta Pradhan, gynecologist and obstetrician based in Bhubaneswar, Odisha, India.",
+  "version": "1.0.1",
+  "type": "module",
+  "author": "Binay Pradhan",
+  "scripts": {
+    "dev": "hugo server",
+    "build": "hugo --gc --minify --templateMetrics --templateMetricsHints --forceSyncStatic",
+    "preview": "hugo server --disableFastRender --navigateToChanged --templateMetrics --templateMetricsHints --watch --forceSyncStatic -e production --minify",
+    "format": "prettier --write --print-width 250 ."
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.14",
+    "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/typography": "^0.5.19",
+    "prettier": "^3.6.2",
+    "prettier-plugin-go-template": "0.0.15",
+    "prettier-plugin-tailwindcss": "^0.6.14"
+  }
+}

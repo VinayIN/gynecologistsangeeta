@@ -1,0 +1,173 @@
+favicon = "images/favicon.png"
+logo = "images/dr-sangeeta-logo.png"
+logo_darkmode = "images/dr-sangeeta-logo.png"
+logo_width = "184px"
+logo_height = "48px"
+logo_webp = true
+logo_text = "Dr. Sangeeta Pradhan"
+navbar_fixed = true
+theme_switcher = true
+theme_default = "system"
+mainSections = []
+
+# Communications
+contact_form_action = "mailto:sangeetapradhan321@gmail.com"
+google_tag_manager = ""
+google_adsense = ""
+custom_script = ""
+copyright = "© 2025 Dr. Sangeeta Pradhan. All rights reserved. Designed & Developed by [Binay Pradhan](https://binaypradhan.com)"
+
+# Asset bundles
+[[plugins.css]]
+link = "plugins/swiper/swiper-bundle.css"
+lazy = true
+[[plugins.css]]
+link = "plugins/glightbox/glightbox.css"
+lazy = true
+[[plugins.css]]
+link = "plugins/font-awesome/v6/brands.css"
+lazy = true
+[[plugins.css]]
+link = "plugins/font-awesome/v6/solid.css"
+lazy = true
+[[plugins.css]]
+link = "plugins/font-awesome/v6/icons.css"
+lazy = true
+
+[[plugins.js]]
+link = "js/search.js"
+lazy = false
+[[plugins.js]]
+link = "plugins/swiper/swiper-bundle.js"
+lazy = false
+[[plugins.js]]
+link = "plugins/cookie.js"
+lazy = false
+[[plugins.js]]
+link = "plugins/glightbox/glightbox.js"
+lazy = true
+[[plugins.js]]
+link = "js/gallery-slider.js"
+lazy = true
+[[plugins.js]]
+link = "js/accordion.js"
+lazy = true
+[[plugins.js]]
+link = "js/tab.js"
+lazy = true
+[[plugins.js]]
+link = "js/modal.js"
+lazy = true
+[[plugins.js]]
+link = "plugins/youtube-lite.js"
+lazy = true
+
+[preloader]
+enable = false
+preloader = ""
+
+[search]
+enable = true
+show_image = true
+show_description = true
+
+[local_business]
+enable = true
+id = "https://gynecologistsangeeta.com/#medical-clinic"
+type = "MedicalClinic"
+name = "Dr. Sangeeta Pradhan Gynecology & Obstetrics"
+description = "Consult Dr. Sangeeta Pradhan for respectful, evidence-based gynecology, high-risk obstetrics, fertility support, and preventive women's health in Bhubaneswar."
+url = "https://gynecologistsangeeta.com/"
+logo = "images/dr-sangeeta-logo.png"
+image = "images/og-image.png"
+telephone = "+91 82490 12345"
+price_range = "₹₹"
+founder = "Dr. Sangeeta Pradhan"
+has_map = "https://www.google.com/maps/search/?api=1&query=Hi-Tech+Medical+College+Bhubaneswar"
+area_served = ["Bhubaneswar", "Odisha", "Eastern India"]
+knows_about = [
+  "High-risk pregnancy care",
+  "VBAC preparation",
+  "Minimally invasive gynecology",
+  "Fertility optimisation",
+  "Women's preventive health",
+  "Hormonal and metabolic care",
+]
+same_as = [
+  "https://wa.me/918249012345",
+  "tel:+918249012345",
+  "mailto:sangeetapradhan321@gmail.com",
+]
+
+  [local_business.address]
+  street = "Pandra, Rasulgarh"
+  locality = "Bhubaneswar"
+  region = "Odisha"
+  postal_code = "751025"
+  country = "IN"
+
+  [local_business.geo]
+  latitude = 20.2961
+  longitude = 85.8406
+
+  [[local_business.opening_hours]]
+  day = "Mo-Sa"
+  opens = "09:00"
+  closes = "13:00"
+
+  [[local_business.opening_hours]]
+  day = "Mo-Sa"
+  opens = "17:00"
+  closes = "20:00"
+
+primary_color = "#0f172a"
+include_sections = ["pages", "about", "services", "publications"]
+show_image = true
+show_description = true
+show_tags = false
+show_categories = false
+
+[announcement]
+enable = false
+expire_days = 7
+content = ""
+
+[metadata]
+keywords = [
+  "gynecologist in bhubaneswar",
+  "high risk pregnancy specialist",
+  "laparoscopic gynecology odisha",
+  "fertility doctor bhubaneswar",
+  "women's health clinic odisha",
+]
+description = "Consult Dr. Sangeeta Pradhan for respectful, evidence-based gynecology, high-risk obstetrics, fertility support, and preventive women's health in Bhubaneswar."
+author = "Dr. Sangeeta Pradhan"
+twitter = ""
+image = "images/og-image.png"
+
+[site_verification]
+google = ""
+
+[cookies]
+enable = false
+expire_days = 60
+content = "This site uses cookies to improve your browsing experience."
+button = "I Accept"
+
+[mermaid]
+js_url = "https://cdn.jsdelivr.net/npm/mermaid@latest/dist/mermaid.esm.min.mjs"
+
+[widgets]
+sidebar = []
+
+[google_map]
+enable = false
+map_api_key = ""
+map_latitude = ""
+map_longitude = ""
+map_marker = "images/marker.png"
+
+[subscription]
+enable = false
+mailchimp_form_action = ""
+mailchimp_form_name = ""

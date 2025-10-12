@@ -1,0 +1,26 @@
+<!-- JS Plugins + Main script -->
+{{ $scripts := slice }} {{ $scriptsLazy := slice }} {{ $externalScripts := slice }} {{ $externalLazy := slice }} {{ range site.Params.plugins.js }} {{ $resource := resources.Get .link }} {{ if $resource }} {{ if .lazy }} {{ $scriptsLazy =
+$scriptsLazy | append $resource }} {{ else }} {{ $scripts = $scripts | append $resource }} {{ end }} {{ else }} {{ $src := .link }} {{ if not (strings.HasPrefix $src "http") }} {{ $src = relURL $src }} {{ end }} {{ $entry := dict "src" $src
+"attributes" .attributes }} {{ if .lazy }} {{ $externalLazy = $externalLazy | append $entry }} {{ else }} {{ $externalScripts = $externalScripts | append $entry }} {{ end }} {{ end }} {{ end }} {{ with resources.Get "js/main.js" }} {{ $scripts =
+$scripts | append . }} {{ end }} {{ if gt (len $scripts) 0 }} {{ $scripts = $scripts | resources.Concat "js/script.js" }} {{ if hugo.IsProduction }} {{ $scripts = $scripts | minify | fingerprint }} {{ end }} {{ end }} {{ if gt (len $scriptsLazy) 0 }}
+{{ $scriptsLazy = $scriptsLazy | resources.Concat "js/script-lazy.js" }} {{ if hugo.IsProduction }} {{ $scriptsLazy = $scriptsLazy | minify | fingerprint }} {{ end }} {{ end }} {{ range $externalScripts }}
+<script src="{{ .src }}" defer {{ with .attributes }}{{ . | safeHTMLAttr }}{{ end }}></script>
+{{ end }} {{ if $scripts }} {{ $integrity := "" }} {{ if hugo.IsProduction }} {{ $integrity = $scripts.Data.Integrity }} {{ end }}
+<script src="{{ $scripts.RelPermalink }}" defer {{ if $integrity }}crossorigin="anonymous" integrity="{{ $integrity }}" {{ end }}></script>
+{{ end }} {{ range $externalLazy }}
+<script src="{{ .src }}" async defer {{ with .attributes }}{{ . | safeHTMLAttr }}{{ end }}></script>
+{{ end }} {{ if $scriptsLazy }} {{ $integrityLazy := "" }} {{ if hugo.IsProduction }} {{ $integrityLazy = $scriptsLazy.Data.Integrity }} {{ end }}
+<script src="{{ $scriptsLazy.RelPermalink }}" async defer {{ if $integrityLazy }}crossorigin="anonymous" integrity="{{ $integrityLazy }}" {{ end }}></script>
+{{ end }}
+
+<!-- progressive web app -->
+{{ partialCached "pwa.html" . }}
+
+<!-- cookie consent -->
+{{ partialCached "cookie-consent.html" . }}
+
+<!-- google adsense -->
+{{ partialCached "adsense-script.html" . }}
+
+<!-- cookie consent -->
+{{ partialCached "announcement-script.html" . }}
